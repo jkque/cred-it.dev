@@ -44,6 +44,20 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($this->isHttpException($exception)) {
+            switch($exception->getStatusCode()) {
+                // internal error
+                case '500':
+                    return redirect(route('error.500'));
+                    break;
+                // not found or default
+                case 404:
+                default:
+                    //return redirect(route('error.404'));
+                    return $this->renderHttpException($exception);
+                    break;
+            }
+        }
         return parent::render($request, $exception);
     }
 

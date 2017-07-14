@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/404', function () {
+    return view('Error.404');
+})->name('error.404');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'Client\DashboardController@index')->name('client.dashboard');
+Route::get('/profile', 'Client\DashboardController@profile')->name('client.dashboard-profile');
+

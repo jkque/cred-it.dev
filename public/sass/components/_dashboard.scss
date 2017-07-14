@@ -1,0 +1,45 @@
+#main{
+  aside{
+    @media #{$medium-and-up} {
+      #slide-out{
+      top: 64px
+      }
+    }
+  }
+
+  .content{
+    > .col {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .col.no-padding{
+    padding: 0;
+  }
+
+}
+
+.inline-infos{
+  .inline-info{
+    display: inline-block;
+    padding: 0 10px;
+    border-right: 2px solid #F0F2F4;
+    &:first-child{
+      padding-left: 0;
+    }
+    &:last-child{
+      padding-right: 0;
+      border-right: 0;
+    }
+
+    i{
+      padding: 5px;
+      margin-right: 5px;
+      border-radius: 100px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+}
