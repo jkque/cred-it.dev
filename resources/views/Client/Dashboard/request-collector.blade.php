@@ -26,7 +26,7 @@
       <li><a class="collapsible-header" href="#">Enroll Supplementary Card</a></li>
     </ul>
   </aside>
-  <div id="content" class="col s12 l8 xl9 no-padding">
+  <div class="content col s12 l12">
 
 
       <!-- <ul class="pill-tabs">
@@ -61,7 +61,7 @@
             <div class="card no-shadow">
               <div class="card-content">
                 <div id="welcomeMessage">
-                  <h6>Welcome, Daniel Johnson</h6>
+                  <h5>Welcome, Daniel Johnson</h5>
                 </div>
                 <div id="loginDetails">
                   <p>Your last sign on was on : <strong>July 13, 2017</strong></p>
@@ -78,7 +78,7 @@
               <div class="card no-shadow">
                 <div class="card-content right-align">
                   <p>Current Balance <i class="fa fa-question-circle tooltipped" data-position="top" data-delay="50" data-tooltip="Your outstanding balance to date" aria-hidden="true"></i></p>
-                  <h6><span class="currency">$</span>24,600.81</h6>
+                  <h5><span class="currency">$</span>24,600.81</h5>
                 </div>
               </div>
             </div>
@@ -86,7 +86,7 @@
               <div class="card no-shadow">
                 <div class="card-content right-align">
                   <p>Available Credit <i class="fa fa-question-circle tooltipped" data-position="top" data-delay="50" data-tooltip="Unused portion of your Relationship Limit or Account Credit Limit, as applicable" aria-hidden="true"></i></p>
-                  <h6><span class="currency">$</span>24,600.81</h6>
+                  <h5><span class="currency">$</span>24,600.81</h5>
                 </div>
               </div>
             </div>
@@ -220,38 +220,6 @@
           </div>
         </div>
       </div>
-  </div>
-  <div id="quick-action" class="col s12 l4 xl3 no-padding  hide-on-med-and-down show-on-large">
-    <div class="row no-margin-bottom border no-border-left">
-      <div class="col s12 m12 l12 ">
-        <p class="header">Quick Action</p>
-      </div>
-    </div>
-    <div class="row">
-        <form class="col s12 m12 l12 no-padding">
-          <div class="input-field col s12 choices no-margin-top">
-           <select>
-             <option selected>Choose your option</option>
-             <option value="1">Pay Online</option>
-             <option value="2">Request Collector</option>
-           </select>
-         </div>
-          <div class="input-field col s12">
-            <label class="" for="date">Date</label>
-            <input id="date" type="date" class="datepicker">
-          </div>
-          <div class="input-field col s12">
-            <input id="address" type="text" class="validate">
-            <label for="address">Address</label>
-          </div>
-          <div class="input-field col s12 center-align">
-            <button class="btn waves-effect waves-light btn-large " type="submit" name="action">Submit
-             <i class="material-icons right">send</i>
-           </button>
-          </div>
-        </form>
-
-    </div>
   </div>
 </div>
 @endsection

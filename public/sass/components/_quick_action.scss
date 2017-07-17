@@ -1,0 +1,20 @@
+#quick-action{
+  .header{
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    padding: 17px 0;
+  }
+
+  .choices{
+    background-color: rgba(0,0,0,.05);
+
+    .select-dropdown{
+          margin: 10px 0 15px 0;
+          border-bottom: 0;
+    }
+  }
+
+
+}

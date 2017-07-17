@@ -7243,4 +7243,16 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   #dataTable_wrapper .dt-buttons, #dataTable_wrapper .dataTables_filter {
     display: none; } }
 
+#quick-action .header {
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  padding: 17px 0; }
+#quick-action .choices {
+  background-color: rgba(0, 0, 0, 0.05); }
+  #quick-action .choices .select-dropdown {
+    margin: 10px 0 15px 0;
+    border-bottom: 0; }
+
 /*# sourceMappingURL=materialize.css.map */

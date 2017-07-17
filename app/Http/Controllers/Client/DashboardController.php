@@ -24,4 +24,7 @@ class DashboardController extends Controller
     public function profile(){
         return view("Client.Dashboard.profile");
     }
+    public function requestCollector(){
+        return view("Client.Dashboard.request-collector");
+    }
 }
