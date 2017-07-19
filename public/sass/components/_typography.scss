@@ -23,7 +23,7 @@ html{
   color: $off-black;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 400;
+	font-weight: 600;
 	line-height: 1.1;
 }
 
@@ -63,5 +63,10 @@ small { font-size: 75%; }
 
 .sp-header{
   font-weight: 300;
+  text-transform: uppercase;
+}
+
+.page-title{
+  padding: 20px 30px 15px;
   text-transform: uppercase;
 }

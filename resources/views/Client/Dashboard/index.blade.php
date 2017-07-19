@@ -61,7 +61,7 @@
             <div class="card no-shadow">
               <div class="card-content">
                 <div id="welcomeMessage">
-                  <h6>Welcome, Daniel Johnson</h6>
+                  <h5>Welcome, Daniel Johnson</h5>
                 </div>
                 <div id="loginDetails">
                   <p>Your last sign on was on : <strong>July 13, 2017</strong></p>
@@ -78,7 +78,7 @@
               <div class="card no-shadow">
                 <div class="card-content right-align">
                   <p>Current Balance <i class="fa fa-question-circle tooltipped" data-position="top" data-delay="50" data-tooltip="Your outstanding balance to date" aria-hidden="true"></i></p>
-                  <h6><span class="currency">$</span>24,600.81</h6>
+                  <h5><span class="currency">$</span>24,600.81</h5>
                 </div>
               </div>
             </div>
@@ -86,7 +86,7 @@
               <div class="card no-shadow">
                 <div class="card-content right-align">
                   <p>Available Credit <i class="fa fa-question-circle tooltipped" data-position="top" data-delay="50" data-tooltip="Unused portion of your Relationship Limit or Account Credit Limit, as applicable" aria-hidden="true"></i></p>
-                  <h6><span class="currency">$</span>24,600.81</h6>
+                  <h5><span class="currency">$</span>24,600.81</h5>
                 </div>
               </div>
             </div>

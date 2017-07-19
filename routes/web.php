@@ -24,4 +24,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'Client\DashboardController@index')->name('client.dashboard');
 Route::get('/profile', 'Client\DashboardController@profile')->name('client.dashboard-profile');
-Route::get('/request-collector', 'Client\DashboardController@profile')->name('client.dashboard-profile');
+Route::get('/request-collector', 'Client\DashboardController@requestCollector')->name('client.requestCollector');

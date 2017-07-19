@@ -26,11 +26,11 @@
              <i class="material-icons right">arrow_drop_down</i>
            </a>
            <ul id="dropdown1" class="dropdown-content ">
-             <li class="dropdown-header">Config</li>
+             <!-- <li class="dropdown-header">Config</li>
              <li><a href="#!">Account</a></li>
              <li><a href="#!">Security</a></li>
              <li><a href="#!">Payments</a></li>
-             <li class="divider"></li>
+             <li class="divider"></li> -->
              <li><a href="#!"><i class="material-icons dp48 hide-on-small-and-down">lock</i>Lock</a></li>
              <li><a href="#! "><i class="material-icons dp48 hide-on-small-and-down">settings_power</i>Logout</a></li>
            </ul>

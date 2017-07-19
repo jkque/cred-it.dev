@@ -45,7 +45,7 @@ $(document).ready(function() {
         //     }
         // ],
         // lengthChange: false,
-        dom: 'Bfrtip',
+        dom: 'Brtip',
 
 
     } );

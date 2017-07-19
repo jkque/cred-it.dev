@@ -3428,7 +3428,7 @@ html {
       font-size: 15px; } }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.1; }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -3550,6 +3550,10 @@ small {
 
 .sp-header {
   font-weight: 300;
+  text-transform: uppercase; }
+
+.page-title {
+  padding: 20px 30px 15px;
   text-transform: uppercase; }
 
 .scale-transition {
@@ -7157,6 +7161,9 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 .border {
   box-shadow: none;
   border: 2px solid #F0F2F4; }
+
+.border-right {
+  border-right: 2px solid #F0F2F4; }
 
 .no-border-top {
   border-top: 0; }
