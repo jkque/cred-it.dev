@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/404', function () {
@@ -22,7 +22,7 @@ Route::get('/404', function () {
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'DashboardController@index')->name('home');
+Route::get('/home', 'Client\DashboardController@index')->name('home');
 Route::get('/dashboard', 'Client\DashboardController@index')->name('client.dashboard');
 Route::get('/profile', 'Client\DashboardController@profile')->name('client.dashboard-profile');
 Route::get('/request-collector', 'Client\DashboardController@requestCollector')->name('client.requestCollector');
