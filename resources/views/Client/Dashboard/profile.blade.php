@@ -1,7 +1,7 @@
 @extends('layouts.client')
 @title('Dashboard - Profile')
 @body_class('dashboard')
-@groupblock('app-header', 'layouts.headers.client-dashboard', 'header')
+@groupblock('app-header', 'layouts.headers.client-dashboard', 'header', ['user'=>$user])
 
 @cssblock("Client.Dashboard.css.styles", "dashboard-styles")
 
@@ -49,7 +49,7 @@
                   <li class="indicator" style="right: 827px; left: 95px;"></li>
           </ul> -->
           <ul class="pill-tabs border hide-on-med-and-down">
-            <li class="pill-tab"><a   href="#">Overview</a></li>
+            <li class="pill-tab"><a href="{{ route('client.dashboard') }}">Overview</a></li>
             <li class="pill-tab"><a class="active " href="#">Profile</a></li>
             <li class="pill-tab"><a href="#">Security</a></li>
             <li class="pill-tab"><a href="#">Notification</a></li>

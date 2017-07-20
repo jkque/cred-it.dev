@@ -22,7 +22,9 @@ Route::get('/404', function () {
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'Client\DashboardController@index')->name('home');
-Route::get('/dashboard', 'Client\DashboardController@index')->name('client.dashboard');
-Route::get('/profile', 'Client\DashboardController@profile')->name('client.dashboard-profile');
-Route::get('/request-collector', 'Client\DashboardController@requestCollector')->name('client.requestCollector');
+Route::get('/home', 'Client\DashboardController@index')->name('home')->middleware('auth');;
+Route::get('/dashboard', 'Client\DashboardController@index')->name('client.dashboard')->middleware('auth');;
+Route::get('/profile', 'Client\DashboardController@profile')->name('client.dashboard-profile')->middleware('auth');;
+Route::get('/request-collector', 'Client\DashboardController@requestCollector')->name('client.requestCollector')->middleware('auth');
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('auth.logout')->middleware('auth');

@@ -4,22 +4,13 @@ namespace App\Auth;
 
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Auth\UserProvider;
-use Illuminate\Database\ConnectionInterface;
 use Illuminate\Contracts\Hashing\Hasher as HasherContract;
 use Illuminate\Contracts\Auth\Authenticatable as UserContract;
 use Illuminate\Support\Facades\Hash;
-//use Illuminate\Auth\GenericUser;
-use App\Auth\CustomGenericUser as GenericUser;
+use Illuminate\Support\Facades\Auth;
 
 class CustomUserProvider implements UserProvider
 {
-    /**
-     * The active database connection.
-     *
-     * @var \Illuminate\Database\ConnectionInterface
-     */
-    protected $conn;
-
     /**
      * The hasher implementation.
      *
@@ -28,28 +19,23 @@ class CustomUserProvider implements UserProvider
     protected $hasher;
 
     /**
-     * The table containing the users.
+     * The Eloquent user model.
      *
      * @var string
      */
-    protected $table;
-
-    protected $auth_id;
+    protected $model;
 
     /**
      * Create a new database user provider.
      *
-     * @param  \Illuminate\Database\ConnectionInterface  $conn
      * @param  \Illuminate\Contracts\Hashing\Hasher  $hasher
-     * @param  string  $table
+     * @param  string  $model
      * @return void
      */
-    public function __construct(ConnectionInterface $conn, HasherContract $hasher, $table, $auth_id)
+    public function __construct(HasherContract $hasher, $model)
     {
-        $this->conn = $conn;
-        $this->table = $table;
+        $this->model = $model;
         $this->hasher = $hasher;
-        $this->auth_id = $auth_id;
     }
 
     /**
@@ -60,8 +46,13 @@ class CustomUserProvider implements UserProvider
      */
     public function retrieveById($identifier)
     {
-        $user = $this->conn->table($this->table)->where($this->auth_id,'=',$identifier);//find($identifier);
-        return $this->getGenericUser($user);
+        $model = $this->createModel();
+        $user = $model->newQuery()
+            ->where($model->getAuthIdentifierName(), $identifier)
+            ->first();
+        $user_type = $model->getUserType($user->user_type);
+        $user->user_type_name = $user_type->name;
+        return $user;
     }
 
     /**
@@ -73,12 +64,12 @@ class CustomUserProvider implements UserProvider
      */
     public function retrieveByToken($identifier, $token)
     {
-        $user = $this->conn->table($this->table)
-                        ->where('id', $identifier)
-                        ->where('remember_token', $token)
-                        ->first();
+        $model = $this->createModel();
 
-        return $this->getGenericUser($user);
+        return $model->newQuery()
+            ->where($model->getAuthIdentifierName(), $identifier)
+            ->where($model->getRememberTokenName(), $token)
+            ->first();
     }
 
     /**
@@ -90,9 +81,16 @@ class CustomUserProvider implements UserProvider
      */
     public function updateRememberToken(UserContract $user, $token)
     {
-        $this->conn->table($this->table)
-                ->where('id', $user->getAuthIdentifier())
-                ->update(['remember_token' => $token]);
+        unset($user->user_type_name);
+        $user->setRememberToken($token);
+
+        $timestamps = $user->timestamps;
+
+        $user->timestamps = false;
+
+        $user->save();
+
+        $user->timestamps = $timestamps;
     }
 
     /**
@@ -103,36 +101,25 @@ class CustomUserProvider implements UserProvider
      */
     public function retrieveByCredentials(array $credentials)
     {
+        if (empty($credentials)) {
+            return;
+        }
+
         // First we will add each credential element to the query as a where clause.
         // Then we can execute the query and, if we found a user, return it in a
-        // generic "user" object that will be utilized by the Guard instances.
-        $query = $this->conn->table($this->table);
+        // Eloquent User "model" that will be utilized by the Guard instances.
+        $query = $this->createModel()->newQuery();
 
         foreach ($credentials as $key => $value) {
             if (! Str::contains($key, 'password')) {
                 $query->where($key, $value);
             }
         }
-
-        // Now we are ready to execute the query to see if we have an user matching
-        // the given credentials. If not, we will just return nulls and indicate
-        // that there are no matching users for these given credential arrays.
         $user = $query->first();
-
-        return $this->getGenericUser($user);
-    }
-
-    /**
-     * Get the generic user.
-     *
-     * @param  mixed  $user
-     * @return \Illuminate\Auth\GenericUser|null
-     */
-    protected function getGenericUser($user)
-    {
-        if (! is_null($user)) {
-            return new GenericUser((array) $user);
-        }
+        $user_type_model = $this->createModel();
+        $user_type = $user_type_model->getUserType($user->user_type);
+        $user->user_type_name = $user_type->name;
+        return $user;
     }
 
     /**
@@ -144,8 +131,72 @@ class CustomUserProvider implements UserProvider
      */
     public function validateCredentials(UserContract $user, array $credentials)
     {
-        return $this->hasher->check(
+        $plain = md5($credentials['password']);
+        $check = $this->hasher->check(
             md5($credentials['password']), Hash::make($user->getAuthPassword())
         );
+        if($check){
+            session([$user->uid => $user]);
+            Auth::guard()->setUser($user);
+        }
+        return $check;
+    }
+
+    /**
+     * Create a new instance of the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function createModel()
+    {
+        $class = '\\'.ltrim($this->model, '\\');
+
+        return new $class;
+    }
+
+    /**
+     * Gets the hasher implementation.
+     *
+     * @return \Illuminate\Contracts\Hashing\Hasher
+     */
+    public function getHasher()
+    {
+        return $this->hasher;
+    }
+
+    /**
+     * Sets the hasher implementation.
+     *
+     * @param  \Illuminate\Contracts\Hashing\Hasher  $hasher
+     * @return $this
+     */
+    public function setHasher(HasherContract $hasher)
+    {
+        $this->hasher = $hasher;
+
+        return $this;
+    }
+
+    /**
+     * Gets the name of the Eloquent user model.
+     *
+     * @return string
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Sets the name of the Eloquent user model.
+     *
+     * @param  string  $model
+     * @return $this
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+
+        return $this;
     }
 }

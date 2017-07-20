@@ -18,10 +18,10 @@
       <ul class="right" id="nav-profile">
          <li>
            <a class="dropdown-button" href="#!" data-activates="dropdown1">
-             <img src="http://www.codecovers.eu/assets/img/modules/materialadmin/avatar1.jpg?1422538623" alt="" >
+             <img src="{{ URL::to('/') }}/img/avatar1.jpg" alt="" >
               <span class="profile-info hide-on-small-and-down" >
-                Daniel Johnson
-                <small>Administrator</small>
+                {{ $user->first_name }} {{ $user->last_name }}
+                <small>{{ $user->user_type_name }}</small>
               </span>
              <i class="material-icons right">arrow_drop_down</i>
            </a>
@@ -32,7 +32,8 @@
              <li><a href="#!">Payments</a></li>
              <li class="divider"></li> -->
              <li><a href="#!"><i class="material-icons dp48 hide-on-small-and-down">lock</i>Lock</a></li>
-             <li><a href="#! "><i class="material-icons dp48 hide-on-small-and-down">settings_power</i>Logout</a></li>
+             <li>
+                <a href="{{ route('auth.logout') }}"><i class="material-icons dp48 hide-on-small-and-down">settings_power</i>Logout</a></li>
            </ul>
          </li>
       </ul>

@@ -1,7 +1,7 @@
 @extends('layouts.client')
 @title('Dashboard')
 @body_class('dashboard')
-@groupblock('app-header', 'layouts.headers.client-dashboard', 'header')
+@groupblock('app-header', 'layouts.headers.client-dashboard', 'header', ['user'=>$user])
 
 @cssblock("Client.Dashboard.css.styles", "dashboard-styles")
 
@@ -49,7 +49,7 @@
           </ul> -->
           <ul class="pill-tabs border hide-on-med-and-down">
             <li class="pill-tab"><a class="active "  href="#">Overview</a></li>
-            <li class="pill-tab"><a href="#">Profile</a></li>
+            <li class="pill-tab"><a href="{{ route('client.dashboard-profile') }}">Profile</a></li>
             <li class="pill-tab"><a href="#">Security</a></li>
             <li class="pill-tab"><a href="#">Notification</a></li>
           </ul>
@@ -61,7 +61,7 @@
             <div class="card no-shadow">
               <div class="card-content">
                 <div id="welcomeMessage">
-                  <h5>Welcome, Daniel Johnson</h5>
+                  <h5>Welcome, {{ $user->first_name }} {{ $user->last_name }}</h5>
                 </div>
                 <div id="loginDetails">
                   <p>Your last sign on was on : <strong>July 13, 2017</strong></p>
@@ -120,7 +120,16 @@
                 </tr>
               </tfoot> -->
               <tbody>
-                <tr type="billed">
+                @if($transactions)
+                  @foreach($transactions as $i)
+                    <tr type="billed">
+                    <td>{{ $i->trans_timestamp }}</td>
+                    <td>{{ $i->name }}, {{ $i->address }}, {{ $i->contact_person }}, {{ $i->contact_no }}</td>
+                    <td>{{ (intval($i->amount) + (intval($i->amount) * $coop_meta->interest_rate) + (intval($i->amount) * $coop_meta->credit_interest_rate) ) }}</td>
+                  </tr>
+                  @endforeach
+                @endif
+                <!--tr type="billed">
                 	<td>10/17/2016</td>
                 	<td>consectetuer rhoncus. Nullam velit dui, semper et,</td>
                 	<td>$22.35</td>
@@ -214,7 +223,7 @@
                 	<td>12/11/2017</td>
                 	<td>Nulla eu neque pellentesque massa lobortis ultrices. Vivamus</td>
                 	<td>$50.12</td>
-                </tr>
+                </tr-->
               </tbody>
           </table>
           </div>
