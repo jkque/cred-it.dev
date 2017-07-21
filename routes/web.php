@@ -22,11 +22,12 @@ Route::get('/404', function () {
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'Client\DashboardController@index')->name('home')->middleware('auth');;
-Route::get('/dashboard', 'Client\DashboardController@index')->name('client.dashboard')->middleware('auth');;
-Route::get('/profile', 'Client\DashboardController@profile')->name('client.dashboard-profile')->middleware('auth');;
+Route::get('/home', 'Client\DashboardController@index')->name('home')->middleware('auth');
+Route::get('/dashboard', 'Client\DashboardController@index')->name('client.dashboard')->middleware('auth');
+Route::get('/profile', 'Client\DashboardController@profile')->name('client.dashboard-profile')->middleware('auth');
 Route::get('/request-collector', 'Client\DashboardController@requestCollector')->name('client.requestCollector')->middleware('auth');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('auth.logout')->middleware('auth');
 
-Route::get('/transaction-simulator', 'Client\DashboardController@simulator')->name('client.transaction-simulator')->middleware('guest');;
+Route::get('/transaction-simulator', 'Client\DashboardController@simulator')->name('client.transaction-simulator');
+Route::post('/simulator-add', 'Client\DashboardController@simulatorAdd')->name('client.transaction-simulator-add');
