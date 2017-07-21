@@ -92,7 +92,7 @@
             </div>
           </div>
         </div>
-        <div class="row border-right no-border-top no-margin-bottom">
+        <!-- <div class="row border-right no-border-top no-margin-bottom">
           <div class="col s12 m12 l12 no-padding">
             <ul id="dt-tabs" class="tabs border no-border-top">
                     <li class="tab"><a id="all" class="active"  href="#">Show All</a></li>
@@ -101,7 +101,7 @@
                     <li class="indicator" style="right: 827px; left: 95px;"></li>
             </ul>
           </div>
-        </div>
+        </div> -->
         <div class="row border no-border-top">
           <div class="col s12 l12 no-padding no-margin">
             <table id="dataTable" class="mdl-data-table no-border-left no-border-right responsive" cellspacing="0" width="100%">
