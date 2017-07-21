@@ -28,3 +28,5 @@ Route::get('/profile', 'Client\DashboardController@profile')->name('client.dashb
 Route::get('/request-collector', 'Client\DashboardController@requestCollector')->name('client.requestCollector')->middleware('auth');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('auth.logout')->middleware('auth');
+
+Route::get('/transaction-simulator', 'Client\DashboardController@simulator')->name('client.transaction-simulator')->middleware('guest');;

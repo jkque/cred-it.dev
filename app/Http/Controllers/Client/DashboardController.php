@@ -46,4 +46,7 @@ class DashboardController extends Controller
     public function requestCollector(){
         return view("Client.Dashboard.requestCollector");
     }
+    public function simulator(){
+        return view("Client.Dashboard.transactionSimulator");
+    }
 }
