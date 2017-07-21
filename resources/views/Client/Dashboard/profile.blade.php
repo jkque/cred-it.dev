@@ -22,7 +22,7 @@
                 </div>
       </li>
       <li><a class="collapsible-header" href="#">Pay Online</a></li>
-      <li><a class="collapsible-header" href="#">Request Collector</a></li>
+      <li><a class="collapsible-header" href="{{ route('client.requestCollector') }}">Request Collector</a></li>
       <li><a class="collapsible-header" href="#">Savings</a></li>
       <li><a class="collapsible-header" href="#">Enroll Supplementary Card</a></li>
     </ul>

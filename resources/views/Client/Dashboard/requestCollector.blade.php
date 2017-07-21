@@ -12,7 +12,7 @@
 <div class="row" id="main">
   <aside>
     <ul id="slide-out" class="side-nav fixed collapsible collapsible-accordion">
-      <li class="active"><a href="#" class="collapsible-header active ">My Account</a>
+      <li class="active"><a href="{{ route('client.dashboard') }}" class="collapsible-header active ">My Account</a>
         <div class="collapsible-body hide-on-med-and-up">
                   <ul>
                     <li><a href="#">Overview</a></li>

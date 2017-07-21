@@ -22,7 +22,7 @@
                 </div>
       </li>
       <li><a class="collapsible-header" href="#">Pay Online</a></li>
-      <li><a class="collapsible-header" href="#">Request Collector</a></li>
+      <li><a class="collapsible-header" href="{{ route('client.requestCollector') }}">Request Collector</a></li>
       <li><a class="collapsible-header" href="#">Enroll Supplementary Card</a></li>
     </ul>
   </aside>
@@ -78,7 +78,7 @@
               <div class="card no-shadow">
                 <div class="card-content right-align">
                   <p>Current Balance <i class="fa fa-question-circle tooltipped" data-position="top" data-delay="50" data-tooltip="Your outstanding balance to date" aria-hidden="true"></i></p>
-                  <h5><span class="currency">$</span>24,600.81</h5>
+                  <h5><span class="currency">$</span>{{ $dues }}</h5>
                 </div>
               </div>
             </div>
