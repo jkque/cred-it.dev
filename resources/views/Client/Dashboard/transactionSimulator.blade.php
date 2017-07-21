@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="row login  base ">
-    <div class="col s12 m12 l10 xl6 container">
+    <div class="col s12 m12 l10 xl6 container" style="overflow:visible;">
         <div class="col s12 m12 l6 form-side ">
             <h5 class="sp-header center-align">Transaction Simulator</h5>
             @include('flash::message')
@@ -52,7 +52,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <input type="submit" class="waves-effect waves-light btn-large login-button"  value="Submit">
-                  
+
                 </div>
               </div>
             </form>
