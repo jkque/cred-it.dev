@@ -78,7 +78,7 @@
               <div class="card no-shadow">
                 <div class="card-content right-align">
                   <p>Current Balance <i class="fa fa-question-circle tooltipped" data-position="top" data-delay="50" data-tooltip="Your outstanding balance to date" aria-hidden="true"></i></p>
-                  <h5><span class="currency">$</span>{{ $dues }}</h5>
+                  <h5><span class="currency">₱</span>{{ $dues }}</h5>
                 </div>
               </div>
             </div>
@@ -86,7 +86,7 @@
               <div class="card no-shadow">
                 <div class="card-content right-align">
                   <p>Available Credit <i class="fa fa-question-circle tooltipped" data-position="top" data-delay="50" data-tooltip="Unused portion of your Relationship Limit or Account Credit Limit, as applicable" aria-hidden="true"></i></p>
-                  <h5><span class="currency">$</span>24,600.81</h5>
+                  <h5><span class="currency">₱</span>24,600.81</h5>
                 </div>
               </div>
             </div>

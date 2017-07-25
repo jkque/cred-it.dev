@@ -116,9 +116,11 @@ class CustomUserProvider implements UserProvider
             }
         }
         $user = $query->first();
-        $user_type_model = $this->createModel();
-        $user_type = $user_type_model->getUserType($user->user_type);
-        $user->user_type_name = $user_type->name;
+        if($user){
+            $user_type_model = $this->createModel();
+            $user_type = $user_type_model->getUserType($user->user_type);
+            $user->user_type_name = $user_type->name;
+        }
         return $user;
     }
 

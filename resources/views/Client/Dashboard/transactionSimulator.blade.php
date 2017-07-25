@@ -4,6 +4,7 @@
 @groupblock('app-header', 'layouts.headers.default', 'header')
 
 @cssblock("auth.css.styles", "auth-styles")
+@cssblock("Client.Dashboard.css.transaction-sim", "transaction-styles")
 
 @js('https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js')
 @js('https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/additional-methods.min.js')
@@ -19,7 +20,7 @@
               {{ csrf_field() }}
               <div class="row">
                 <div class="input-field col s12">
-                  <select name="cardholder">
+                  <select name="cardholder" required>
                     <option value="" disabled selected>Choose Card Holder</option>
                     @foreach($cardholders as $i)
                     <option value="{{ $i->uid }}">{{ $i->first_name }} {{ $i->last_name }}</option>
@@ -29,7 +30,7 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <select name="merchant">
+                  <select name="merchant" required>
                     <option value="" disabled selected>Choose Merchant</option>
                     @foreach($merchants as $i)
                     <option value="{{ $i->uid }}">{{ $i->name }}</option>
@@ -39,19 +40,19 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input name="transaction_date" type="date" id="date" class="datepicker">
+                  <input name="transaction_date" type="date" id="date" class="datepicker" required>
                   <label for="date">Transaction Date</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input name="amount" placeholder="1,000,000" id="amount" type="text" class="validate">
+                  <input name="amount" placeholder="1,000,000" id="amount" type="text" class="validate" required>
                   <label for="amount">Amount</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input type="submit" class="waves-effect waves-light btn-large login-button"  value="Submit">
+                  <input type="submit" class="waves-effect waves-light btn-large login-button transaction-submit"  value="Submit">
 
                 </div>
               </div>
